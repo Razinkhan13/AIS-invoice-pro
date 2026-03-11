@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AIS Invoice Pro — Free Invoice Generator</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ===== HEADER ===== -->
+  <header class="app-header">
+    <div class="container">
+      <div class="header-brand">
+        <svg class="brand-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect width="40" height="40" rx="8" fill="var(--primary)"/>
+          <path d="M10 12h20M10 18h14M10 24h20M10 30h14" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/>
+        </svg>
+        <span class="brand-name">AIS Invoice Pro</span>
+      </div>
+      <p class="header-tagline">Free Invoice Generator — No signup required</p>
+    </div>
+  </header>
+
+  <!-- ===== MAIN FORM ===== -->
+  <main class="container main-content">
+
+    <!-- ─── Section 1: Company / Sender ─── -->
+    <section class="card" aria-labelledby="company-heading">
+      <h2 class="card-title" id="company-heading">
+        <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M4 4a2 2 0 012-2h8a2 2 0 012 2v2h1a2 2 0 012 2v9a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h1V4zm2 0v2h8V4H6zm-2 4v9h12V8H4z"/></svg>
+        Your Company
+      </h2>
+
+      <div class="logo-upload-area">
+        <div class="logo-preview-wrap">
+          <img id="logoPreview" src="" alt="Company Logo Preview" class="logo-preview hidden" />
+          <span id="logoPlaceholder" class="logo-placeholder">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 12a5 5 0 110-10 5 5 0 010 10zm0 2c-5.33 0-8 2.67-8 4v1h16v-1c0-1.33-2.67-4-8-4z"/></svg>
+          </span>
+        </div>
+        <div class="logo-upload-controls">
+          <label class="btn btn-outline btn-sm" for="logoUpload">
+            <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M16.88 9.1A4 4 0 0116 17H5a5 5 0 01-1-9.9V7a3 3 0 014.52-2.59A4.98 4.98 0 0117 8c0 .38-.04.74-.12 1.1zM11 11h3l-4-4-4 4h3v3h2v-3z"/></svg>
+            Upload Logo
+          </label>
+          <input type="file" id="logoUpload" accept="image/*" class="sr-only" aria-label="Upload company logo" />
+          <button type="button" id="removeLogo" class="btn btn-ghost btn-sm hidden">Remove</button>
+        </div>
+      </div>
+
+      <div class="form-grid">
+        <div class="form-group form-col-2">
+          <label for="companyName">Company Name <span class="required">*</span></label>
+          <input type="text" id="companyName" placeholder="Your Company, Inc." autocomplete="organization" />
+        </div>
+        <div class="form-group form-col-2">
+          <label for="companyEmail">Email</label>
+          <input type="email" id="companyEmail" placeholder="hello@company.com" autocomplete="email" />
+        </div>
+        <div class="form-group form-col-2">
+          <label for="companyPhone">Phone</label>
+          <input type="tel" id="companyPhone" placeholder="+1 (555) 000-0000" autocomplete="tel" />
+        </div>
+        <div class="form-group form-col-2">
+          <label for="companyWebsite">Website</label>
+          <input type="url" id="companyWebsite" placeholder="https://company.com" autocomplete="url" />
+        </div>
+        <div class="form-group form-col-full">
+          <label for="companyAddress">Street Address</label>
+          <input type="text" id="companyAddress" placeholder="123 Main Street" autocomplete="street-address" />
+        </div>
+        <div class="form-group">
+          <label for="companyCity">City</label>
+          <input type="text" id="companyCity" placeholder="New York" autocomplete="address-level2" />
+        </div>
+        <div class="form-group">
+          <label for="companyState">State / Province</label>
+          <input type="text" id="companyState" placeholder="NY" autocomplete="address-level1" />
+        </div>
+        <div class="form-group">
+          <label for="companyZip">ZIP / Postal Code</label>
+          <input type="text" id="companyZip" placeholder="10001" autocomplete="postal-code" />
+        </div>
+        <div class="form-group">
+          <label for="companyCountry">Country</label>
+          <input type="text" id="companyCountry" placeholder="United States" autocomplete="country-name" />
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── Section 2: Client / Bill-To ─── -->
+    <section class="card" aria-labelledby="client-heading">
+      <h2 class="card-title" id="client-heading">
+        <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v1h8v-1zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18v-1a5.97 5.97 0 00-.75-2.906A3.005 3.005 0 0119 15v1h-3zM4.75 12.094A5.973 5.973 0 004 15v1H1v-1a3 3 0 013.75-2.906z"/></svg>
+        Bill To (Client)
+      </h2>
+
+      <div class="form-grid">
+        <div class="form-group form-col-2">
+          <label for="clientName">Client Name <span class="required">*</span></label>
+          <input type="text" id="clientName" placeholder="Jane Doe" autocomplete="name" />
+        </div>
+        <div class="form-group form-col-2">
+          <label for="clientCompany">Client Company</label>
+          <input type="text" id="clientCompany" placeholder="Client Corp." autocomplete="organization" />
+        </div>
+        <div class="form-group form-col-2">
+          <label for="clientEmail">Email</label>
+          <input type="email" id="clientEmail" placeholder="jane@clientcorp.com" autocomplete="email" />
+        </div>
+        <div class="form-group form-col-2">
+          <label for="clientPhone">Phone</label>
+          <input type="tel" id="clientPhone" placeholder="+1 (555) 111-2222" autocomplete="tel" />
+        </div>
+        <div class="form-group form-col-full">
+          <label for="clientAddress">Street Address</label>
+          <input type="text" id="clientAddress" placeholder="456 Client Ave" autocomplete="street-address" />
+        </div>
+        <div class="form-group">
+          <label for="clientCity">City</label>
+          <input type="text" id="clientCity" placeholder="Los Angeles" autocomplete="address-level2" />
+        </div>
+        <div class="form-group">
+          <label for="clientState">State / Province</label>
+          <input type="text" id="clientState" placeholder="CA" autocomplete="address-level1" />
+        </div>
+        <div class="form-group">
+          <label for="clientZip">ZIP / Postal Code</label>
+          <input type="text" id="clientZip" placeholder="90001" autocomplete="postal-code" />
+        </div>
+        <div class="form-group">
+          <label for="clientCountry">Country</label>
+          <input type="text" id="clientCountry" placeholder="United States" autocomplete="country-name" />
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── Section 3: Invoice Details ─── -->
+    <section class="card" aria-labelledby="details-heading">
+      <h2 class="card-title" id="details-heading">
+        <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"/></svg>
+        Invoice Details
+      </h2>
+
+      <div class="form-grid">
+        <div class="form-group form-col-2">
+          <label for="invoiceNumber">Invoice Number</label>
+          <input type="text" id="invoiceNumber" placeholder="INV-0001" />
+        </div>
+        <div class="form-group form-col-2">
+          <label for="paymentTerms">Payment Terms</label>
+          <select id="paymentTerms">
+            <option value="0">Due on Receipt</option>
+            <option value="15">Net 15</option>
+            <option value="30" selected>Net 30</option>
+            <option value="60">Net 60</option>
+            <option value="custom">Custom</option>
+          </select>
+        </div>
+        <div class="form-group form-col-2">
+          <label for="invoiceDate">Invoice Date</label>
+          <input type="date" id="invoiceDate" />
+        </div>
+        <div class="form-group form-col-2">
+          <label for="dueDate">Due Date</label>
+          <input type="date" id="dueDate" />
+        </div>
+        <div class="form-group form-col-2">
+          <label for="currency">Currency</label>
+          <select id="currency">
+            <option value="$">USD ($)</option>
+            <option value="€">EUR (€)</option>
+            <option value="£">GBP (£)</option>
+            <option value="¥">JPY (¥)</option>
+            <option value="₹">INR (₹)</option>
+            <option value="C$">CAD (C$)</option>
+            <option value="A$">AUD (A$)</option>
+          </select>
+        </div>
+        <div class="form-group form-col-2">
+          <label for="poNumber">PO Number</label>
+          <input type="text" id="poNumber" placeholder="PO-12345 (optional)" />
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── Section 4: Line Items ─── -->
+    <section class="card" aria-labelledby="items-heading">
+      <h2 class="card-title" id="items-heading">
+        <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z"/><path fill-rule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 100 2h.01a1 1 0 100-2H7zm3 0a1 1 0 100 2h3a1 1 0 100-2h-3z" clip-rule="evenodd"/></svg>
+        Line Items
+      </h2>
+
+      <div class="table-wrap">
+        <table class="items-table" aria-label="Invoice line items">
+          <thead>
+            <tr>
+              <th class="col-desc">Description</th>
+              <th class="col-qty">Qty</th>
+              <th class="col-price">Unit Price</th>
+              <th class="col-amount">Amount</th>
+              <th class="col-action" aria-label="Actions"></th>
+            </tr>
+          </thead>
+          <tbody id="lineItemsBody">
+            <!-- rows injected by JS -->
+          </tbody>
+        </table>
+      </div>
+
+      <button type="button" id="addItemBtn" class="btn btn-outline mt-4">
+        <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd"/></svg>
+        Add Item
+      </button>
+
+      <!-- Totals -->
+      <div class="totals-area">
+        <div class="totals-inputs">
+          <div class="form-group">
+            <label for="taxRate">Tax Rate (%)</label>
+            <input type="number" id="taxRate" value="0" min="0" max="100" step="0.01" class="input-sm" />
+          </div>
+          <div class="form-group">
+            <label for="discountAmount">Discount ($)</label>
+            <input type="number" id="discountAmount" value="0" min="0" step="0.01" class="input-sm" />
+          </div>
+        </div>
+        <div class="totals-summary">
+          <div class="totals-row">
+            <span>Subtotal</span>
+            <span id="subtotalDisplay">$0.00</span>
+          </div>
+          <div class="totals-row" id="taxRow">
+            <span>Tax (<span id="taxRateDisplay">0</span>%)</span>
+            <span id="taxAmountDisplay">$0.00</span>
+          </div>
+          <div class="totals-row" id="discountRow">
+            <span>Discount</span>
+            <span id="discountDisplay">-$0.00</span>
+          </div>
+          <div class="totals-row totals-grand">
+            <span>Grand Total</span>
+            <span id="grandTotalDisplay">$0.00</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── Section 5: Notes & Terms ─── -->
+    <section class="card" aria-labelledby="notes-heading">
+      <h2 class="card-title" id="notes-heading">
+        <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"/></svg>
+        Notes &amp; Terms
+      </h2>
+      <div class="form-grid">
+        <div class="form-group form-col-full">
+          <label for="invoiceNotes">Notes</label>
+          <textarea id="invoiceNotes" rows="3" placeholder="Thank you for your business! Payment is due within the agreed terms."></textarea>
+        </div>
+        <div class="form-group form-col-full">
+          <label for="invoiceTerms">Terms &amp; Conditions</label>
+          <textarea id="invoiceTerms" rows="3" placeholder="e.g. Late payments are subject to a 1.5% monthly fee. All disputes must be resolved within 30 days."></textarea>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── Action Buttons ─── -->
+    <div class="action-bar">
+      <button type="button" id="previewBtn" class="btn btn-primary">
+        <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M10 12a2 2 0 100-4 2 2 0 000 4z"/><path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd"/></svg>
+        Preview Invoice
+      </button>
+      <button type="button" id="downloadBtn" class="btn btn-success">
+        <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
+        Download PDF
+      </button>
+      <button type="button" id="resetBtn" class="btn btn-ghost">
+        <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z" clip-rule="evenodd"/></svg>
+        Reset Form
+      </button>
+    </div>
+
+  </main>
+
+  <!-- ===== PREVIEW MODAL ===== -->
+  <div id="previewModal" class="modal-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="previewModalTitle">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h2 id="previewModalTitle">Invoice Preview</h2>
+        <div class="modal-actions">
+          <button type="button" id="printBtn" class="btn btn-success btn-sm">
+            <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
+            Download / Print PDF
+          </button>
+          <button type="button" id="closeModal" class="btn btn-ghost btn-sm" aria-label="Close preview">
+            <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
+            Close
+          </button>
+        </div>
+      </div>
+
+      <!-- Printable invoice -->
+      <div class="modal-body">
+        <div id="invoicePreview" class="invoice-print">
+
+          <!-- Invoice header -->
+          <div class="inv-header">
+            <div class="inv-from">
+              <img id="invLogo" src="" alt="Company Logo" class="inv-logo hidden" />
+              <h1 id="invCompanyName" class="inv-company-name"></h1>
+              <address id="invCompanyAddress" class="inv-address"></address>
+            </div>
+            <div class="inv-meta">
+              <h2 class="inv-title">INVOICE</h2>
+              <table class="inv-meta-table">
+                <tr>
+                  <td>Invoice #</td>
+                  <td id="invNumber"></td>
+                </tr>
+                <tr>
+                  <td>Date</td>
+                  <td id="invDate"></td>
+                </tr>
+                <tr>
+                  <td>Due Date</td>
+                  <td id="invDueDate"></td>
+                </tr>
+                <tr id="invPoRow" class="hidden">
+                  <td>PO Number</td>
+                  <td id="invPoNumber"></td>
+                </tr>
+              </table>
+            </div>
+          </div>
+
+          <!-- Bill To -->
+          <div class="inv-bill-section">
+            <div class="inv-bill-to">
+              <h3>Bill To</h3>
+              <div id="invClientInfo"></div>
+            </div>
+          </div>
+
+          <!-- Line items table -->
+          <table class="inv-items-table">
+            <thead>
+              <tr>
+                <th class="inv-col-desc">Description</th>
+                <th class="inv-col-qty">Qty</th>
+                <th class="inv-col-price">Unit Price</th>
+                <th class="inv-col-amount">Amount</th>
+              </tr>
+            </thead>
+            <tbody id="invItemsBody"></tbody>
+          </table>
+
+          <!-- Totals -->
+          <div class="inv-totals">
+            <div class="inv-totals-inner">
+              <div class="inv-totals-row">
+                <span>Subtotal</span>
+                <span id="invSubtotal"></span>
+              </div>
+              <div class="inv-totals-row" id="invTaxRow">
+                <span>Tax (<span id="invTaxRateLabel"></span>%)</span>
+                <span id="invTaxAmount"></span>
+              </div>
+              <div class="inv-totals-row" id="invDiscountRow">
+                <span>Discount</span>
+                <span id="invDiscount"></span>
+              </div>
+              <div class="inv-totals-row inv-grand-total">
+                <span>Total Due</span>
+                <span id="invGrandTotal"></span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Notes & Terms -->
+          <div id="invFooter" class="inv-footer">
+            <div id="invNotesSection" class="inv-notes hidden">
+              <h4>Notes</h4>
+              <p id="invNotesText"></p>
+            </div>
+            <div id="invTermsSection" class="inv-terms hidden">
+              <h4>Terms &amp; Conditions</h4>
+              <p id="invTermsText"></p>
+            </div>
+          </div>
+
+        </div><!-- /invoicePreview -->
+      </div><!-- /modal-body -->
+    </div><!-- /modal-dialog -->
+  </div><!-- /modal -->
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="app-footer">
+    <div class="container">
+      <p>AIS Invoice Pro &mdash; Free &amp; Open Source &mdash; <a href="https://github.com/Razinkhan13/AIS-invoice-pro" target="_blank" rel="noopener">GitHub</a></p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

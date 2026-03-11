@@ -89,7 +89,6 @@ function createRow(desc = '', qty = 1, price = 0) {
 
   qtyInput.addEventListener('input', recalcRow);
   priceInput.addEventListener('input', recalcRow);
-  descInput.addEventListener('input', recalcRow);
   removeBtn.addEventListener('click', () => {
     tr.remove();
     recalcTotals();
